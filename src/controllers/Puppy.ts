@@ -3,15 +3,13 @@ import mongoose from "mongoose";
 import Puppy from "../models/Puppy";
 
 const createPuppy = (req: Request, res: Response, next: NextFunction) => {
-    const { breed, name, dob, size, img } = req.body;
+    const { breed, name, dob } = req.body;
 
     const puppy = new Puppy({
         id: new mongoose.Types.ObjectId(),
         breed,
         name,
-        dob,
-        size,
-        img
+        dob
     })
 
     return puppy

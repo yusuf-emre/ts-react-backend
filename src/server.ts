@@ -2,6 +2,7 @@ import express from "express";
 import http from "http";
 import mongoose from "mongoose";
 import { config } from "./config/config";
+import puppyRoutes from './routes/Puppy';
 
 const app = express();
 
@@ -18,6 +19,10 @@ mongoose
 
 //Only start the server if Mongo connects
 const StartServer = () => {
+    app.use(express.json());
+    //Router
+    app.use('/puppies', puppyRoutes);
+
     //Healthcheck
     app.get('/hej', (req, res, next) => res.status(200).json({ message: 'hej hej' }));
     
